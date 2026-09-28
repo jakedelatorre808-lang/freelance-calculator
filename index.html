@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Freelance Hourly Rate & Project Calculator</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col justify-between">
+
+  <!-- Header -->
+  <header class="bg-indigo-600 text-white py-6 shadow-md">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-3xl font-bold">Freelance Rate & Project Calculator</h1>
+      <p class="text-indigo-200 mt-1">Determine your minimum billable hourly rate and price your projects accurately.</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-4 py-8 w-full space-y-8">
+
+    <!-- Top Ad Banner Placeholder -->
+    <div class="bg-gray-200 border-2 border-dashed border-gray-400 rounded-lg p-4 text-center text-sm text-gray-500">
+      <!-- REPLACE WITH YOUR GOOGLE ADSENSE CODE HERE -->
+      <span>[ Ad Banner Placeholder - Insert Google AdSense Code Here ]</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- CALCULATOR INPUTS -->
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <h2 class="text-xl font-bold text-indigo-900 mb-4 pb-2 border-b">1. Financial Baseline</h2>
+        
+        <form id="rateForm" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Target Annual Take-Home Income ($)</label>
+            <input type="number" id="targetIncome" value="60000" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Annual Business Expenses & Overhead ($)</label>
+            <p class="text-xs text-gray-500">Software, hardware, internet, insurance, etc.</p>
+            <input type="number" id="expenses" value="6000" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Estimated Tax Rate (%)</label>
+            <input type="number" id="taxRate" value="25" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Billable Hours Per Week</label>
+            <p class="text-xs text-gray-500">Average client work hours (excluding admin/marketing)</p>
+            <input type="number" id="billableHours" value="25" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Working Weeks Per Year</label>
+            <p class="text-xs text-gray-500">52 weeks minus vacation & sick days</p>
+            <input type="number" id="workingWeeks" value="48" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+          </div>
+        </form>
+      </div>
+
+      <!-- CALCULATOR RESULTS -->
+      <div class="flex flex-col justify-between space-y-6">
+        <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100">
+          <h2 class="text-xl font-bold text-indigo-900 mb-4 pb-2 border-b border-indigo-200">Required Hourly Rate</h2>
+          
+          <div class="text-center py-4">
+            <span class="text-xs font-semibold text-indigo-600 uppercase tracking-wider">Minimum Rate</span>
+            <div id="hourlyResult" class="text-5xl font-extrabold text-indigo-700">$71.67</div>
+            <span class="text-sm text-gray-500">per billable hour</span>
+          </div>
+
+          <div class="mt-4 pt-4 border-t border-indigo-200 space-y-2 text-sm text-gray-600">
+            <div class="flex justify-between">
+              <span>Gross Revenue Needed:</span>
+              <span id="grossRevenue" class="font-semibold text-gray-800">$86,000</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Total Billable Hours/Year:</span>
+              <span id="totalBillable" class="font-semibold text-gray-800">1,200 hrs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT PRICING CALCULATOR -->
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+          <h3 class="text-lg font-bold text-gray-900 mb-3">Project Price Estimator</h3>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-xs font-medium text-gray-700">Estimated Hours for Project</label>
+              <input type="number" id="projectHours" value="20" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-sm">
+            </div>
+            <div>
+              <label class="block text-xs font-medium text-gray-700">Buffer / Profit Margin (%)</label>
+              <input type="number" id="projectBuffer" value="15" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-sm">
+            </div>
+            <div class="pt-2 bg-gray-50 p-3 rounded-lg flex justify-between items-center">
+              <span class="text-sm font-semibold text-gray-700">Recommended Quote:</span>
+              <span id="projectQuote" class="text-xl font-bold text-emerald-600">$1,648.41</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AFFILIATE RECOMMENDATIONS SECTION -->
+    <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+      <h3 class="text-lg font-bold text-gray-900 mb-2">Essential Freelancer Tools</h3>
+      <p class="text-sm text-gray-500 mb-4">Streamline your invoicing, contracts, and tax management with top-rated tools:</p>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <!-- Affiliate Link 1 -->
+        <a href="YOUR_AFFILIATE_LINK_HERE" target="_blank" class="block p-4 border border-gray-200 rounded-lg hover:border-indigo-500 transition duration-150">
+          <h4 class="font-bold text-indigo-600 text-sm">FreshBooks Invoicing</h4>
+          <p class="text-xs text-gray-500 mt-1">Automate client invoices and track expenses effortlessly.</p>
+        </a>
+
+        <!-- Affiliate Link 2 -->
+        <a href="YOUR_AFFILIATE_LINK_HERE" target="_blank" class="block p-4 border border-gray-200 rounded-lg hover:border-indigo-500 transition duration-150">
+          <h4 class="font-bold text-indigo-600 text-sm">Bonsai Business Hub</h4>
+          <p class="text-xs text-gray-500 mt-1">Contracts, proposals, and invoicing built specifically for freelancers.</p>
+        </a>
+
+        <!-- Affiliate Link 3 -->
+        <a href="YOUR_AFFILIATE_LINK_HERE" target="_blank" class="block p-4 border border-gray-200 rounded-lg hover:border-indigo-500 transition duration-150">
+          <h4 class="font-bold text-indigo-600 text-sm">Wise Business Account</h4>
+          <p class="text-xs text-gray-500 mt-1">Receive foreign payments with zero hidden markup fees.</p>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-100 border-t border-gray-200 py-4 text-center text-xs text-gray-500">
+    <p>&copy; Freelance Rate Calculator. Free online utility for remote workers.</p>
+  </footer>
+
+  <!-- JavaScript Logic -->
+  <script>
+    function calculateRate() {
+      const targetIncome = parseFloat(document.getElementById('targetIncome').value) || 0;
+      const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+      const taxRate = (parseFloat(document.getElementById('taxRate').value) || 0) / 100;
+      const billableHours = parseFloat(document.getElementById('billableHours').value) || 0;
+      const workingWeeks = parseFloat(document.getElementById('workingWeeks').value) || 0;
+
+      // Calculations
+      const requiredPreTaxIncome = targetIncome / (1 - taxRate);
+      const grossRevenueNeeded = requiredPreTaxIncome + expenses;
+      const totalBillableHours = billableHours * workingWeeks;
+
+      let minHourlyRate = 0;
+      if (totalBillableHours > 0) {
+        minHourlyRate = grossRevenueNeeded / totalBillableHours;
+      }
+
+      // Update UI
+      document.getElementById('hourlyResult').innerText = '$' + minHourlyRate.toFixed(2);
+      document.getElementById('grossRevenue').innerText = '$' + grossRevenueNeeded.toLocaleString('en-US', {maximumFractionDigits: 0});
+      document.getElementById('totalBillable').innerText = totalBillableHours.toLocaleString('en-US') + ' hrs';
+
+      // Project pricing calculation
+      calculateProjectQuote(minHourlyRate);
+    }
+
+    function calculateProjectQuote(hourlyRate) {
+      const projectHours = parseFloat(document.getElementById('projectHours').value) || 0;
+      const buffer = (parseFloat(document.getElementById('projectBuffer').value) || 0) / 100;
+
+      const basePrice = projectHours * hourlyRate;
+      const finalQuote = basePrice * (1 + buffer);
+
+      document.getElementById('projectQuote').innerText = '$' + finalQuote.toFixed(2);
+    }
+
+    // Event Listeners
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+      input.addEventListener('input', calculateRate);
+    });
+
+    // Initial Run
+    calculateRate();
+  </script>
+</body>
+</html>
